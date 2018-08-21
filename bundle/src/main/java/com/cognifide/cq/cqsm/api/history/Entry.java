@@ -124,7 +124,7 @@ public class Entry implements Comparable<Entry> {
 	}
 
 	public String getExecutionResultFileName() {
-		return EXECUTION + "-" + StringUtils.replace(fileName, ".cqsm", ".txt");
+		return EXECUTION + "-" + StringUtils.replace(fileName, ".apm", ".txt");
 	}
 
 	private String getExecutorValue() {

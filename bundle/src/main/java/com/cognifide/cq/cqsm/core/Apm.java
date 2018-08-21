@@ -27,5 +27,5 @@ public final class Apm {
 
 	public static final String VENDOR_NAME = "Cognifide Ltd";
 
-	public static final String FILE_EXT = ".cqsm";
+	public static final String FILE_EXT = ".apm";
 }

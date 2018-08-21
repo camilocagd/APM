@@ -41,7 +41,7 @@ import javax.servlet.ServletException;
 @SlingServlet(paths = {"/bin/cqsm/list"}, methods = {"GET"})
 @Service
 @Properties({
-		@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM List Servlet"),
+		@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM List Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)
 })
 public class ScriptListServlet extends SlingAllMethodsServlet {

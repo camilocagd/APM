@@ -26,7 +26,7 @@
     function Console($el) {
       this.uiHelper = $(window).adaptTo("foundation-ui");
       this.$el = $el;
-      this.$textArea = this.$el.find("#cqsm").eq(0);
+      this.$textArea = this.$el.find("#apm").eq(0);
       this.$validationAlertContainer = $('<div class="validation-alert" />');
       this.$textArea.parent().append(this.$validationAlertContainer);
       this.$fileName = this.$el.find('#fname').eq(0);
@@ -52,7 +52,7 @@
         return this.initialValue !== this.$textArea.val();
       },
       getFileName: function () {
-        return this.$fileName.val() + ".cqsm";
+        return this.$fileName.val() + ".apm";
       },
       getOverwrite: function () {
         return this.isFileNameLocked() ? 'true' : 'false';

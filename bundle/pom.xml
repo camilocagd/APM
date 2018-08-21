@@ -174,7 +174,7 @@
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-SymbolicName>com.cognifide.cq.cqsm</Bundle-SymbolicName>
                         <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
-                        <Sling-Nodetypes>CQ-INF/nodetypes/cqsm_nodetypes.cnd</Sling-Nodetypes>
+                        <Sling-Nodetypes>CQ-INF/nodetypes/apm_nodetypes.cnd</Sling-Nodetypes>
                         <Sling-Model-Packages>com.cognifide.cq.cqsm.core.models,com.cognifide.cq.cqsm.core.scripts,com.cognifide.cq.cqsm.api.history</Sling-Model-Packages>
                         <Embed-Dependency>gson,guava</Embed-Dependency>
                         <CQ-Security-Management-Actions>com.cognifide.cq.cqsm.foundation.actions</CQ-Security-Management-Actions>

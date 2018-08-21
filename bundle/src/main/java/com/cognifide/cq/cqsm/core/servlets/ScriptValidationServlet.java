@@ -46,7 +46,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SlingServlet(paths = {"/bin/cqsm/validate"})
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Validation Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Validation Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptValidationServlet extends SlingAllMethodsServlet {
 

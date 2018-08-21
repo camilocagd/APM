@@ -33,7 +33,7 @@ import javax.jcr.RepositoryException;
 
 public interface ScriptManager {
 
-	String FILE_FOR_EVALUATION = "evaluation.cqsm";
+	String FILE_FOR_EVALUATION = "evaluation.apm";
 
 	/**
 	 * Fail-safe execution of script in concrete mode (dry run, automatic execution, validation)

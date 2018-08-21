@@ -52,7 +52,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SlingServlet(paths = {"/bin/cqsm/fileUpload"}, methods = {"POST"})
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM File Upload Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM File Upload Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptUploadServlet extends SlingAllMethodsServlet {
 

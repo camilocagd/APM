@@ -1,20 +1,20 @@
 # Curl interface description
 
 ### Uploading ###
-curl -i -u admin:admin -H "file=permissions.cqsm" -X POST http://localhost:4502/bin/cqsm/fileUpload -F file=@"misc/example scripts/permissions.cqsm"
+curl -i -u admin:admin -H "file=permissions.apm" -X POST http://localhost:4502/bin/cqsm/fileUpload -F file=@"misc/example scripts/permissions.apm"
 
 [
   {
     "verified": true,
     "executionEnabled": true,
-    "path": "/etc/cqsm/cqsmImport/jcr:content/cqsmImport/permissions.cqsm",
+    "path": "/etc/cqsm/cqsmImport/jcr:content/cqsmImport/permissions.apm",
     "executionMode": "ON_DEMAND"
   }
 ]
 
 
 ### Running ###
-curl -i -u admin:admin -d "file=permissions.cqsm&mode=DRY_RUN" -X POST http://localhost:4502/bin/cqsm/run
+curl -i -u admin:admin -d "file=permissions.apm&mode=DRY_RUN" -X POST http://localhost:4502/bin/cqsm/run
 
 [
   ...
@@ -45,15 +45,15 @@ curl -i -u admin:admin -d "content=IMPORT nonexisting.cqsm" -X POST http://local
 
 {
   "message": "Script does not pass validation",
-  "error": "Included script: \u0027nonexisting.cqsm\u0027 does not exists.",
+  "error": "Included script: \u0027nonexisting.apm\u0027 does not exists.",
   "type": "error"
 }
 
 ### Removing ###
-curl -i -u admin:admin -d "file=permissions.cqsm" -X POST http://localhost:4502/bin/cqsm/remove
+curl -i -u admin:admin -d "file=permissions.apm" -X POST http://localhost:4502/bin/cqsm/remove
 
 {
-  "message": "Script removed successfully: /etc/cqsm/cqsmImport/jcr:content/cqsmImport/permissions.cqsm",
+  "message": "Script removed successfully: /etc/cqsm/cqsmImport/jcr:content/cqsmImport/permissions.apm",
   "type": "success"
 }
 
@@ -62,7 +62,7 @@ curl -i -u admin:admin -d "confirmation=true" -X POST http://localhost:4502/bin/
 {
   "message": "Scripts removed successfully, total: 1",
   "paths": [
-    "/etc/cqsm/cqsmImport/jcr:content/cqsmImport/permissions.cqsm"
+    "/etc/cqsm/cqsmImport/jcr:content/cqsmImport/permissions.apm"
   ],
   "type": "success"
 }

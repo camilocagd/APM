@@ -47,7 +47,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SlingServlet(paths = {"/bin/cqsm/scriptConfig"}, methods = {"POST"})
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Execution Mode Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Execution Mode Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptConfigServlet extends SlingAllMethodsServlet {
 

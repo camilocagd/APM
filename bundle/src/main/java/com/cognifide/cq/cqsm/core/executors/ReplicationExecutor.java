@@ -58,7 +58,7 @@ import java.util.Set;
 import javax.jcr.RepositoryException;
 
 @Service({JobConsumer.class, ResourceChangeListener.class})
-@Component(immediate = true, name = "CQSM Replication Event Handler")
+@Component(immediate = true, name = "APM Replication Event Handler")
 @Properties({
 		@Property(name = JobConsumer.PROPERTY_TOPICS, value = ReplicationExecutor.JOB_NAME),
 		@Property(name = ResourceChangeListener.PATHS, value = ScriptStorageImpl.SCRIPT_PATH),

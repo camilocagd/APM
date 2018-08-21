@@ -50,7 +50,7 @@ import javax.jcr.RepositoryException;
 import static com.cognifide.cq.cqsm.core.scripts.ScriptFilters.filterOnModify;
 
 @Component(immediate = true)
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Script Modification Executor"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Script Modification Executor"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ModifyExecutor {
 

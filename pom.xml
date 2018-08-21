@@ -373,6 +373,7 @@
                             <exclude>**/misc/**</exclude>
                             <exclude>**/target/**</exclude>
 
+                            <exclude>**/*.apm</exclude>
                             <exclude>**/*.cqsm</exclude>
                             <exclude>**/*.jar</exclude>
                             <exclude>**/*.json</exclude>

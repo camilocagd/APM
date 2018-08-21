@@ -40,7 +40,7 @@ import javax.servlet.ServletException;
 
 @SlingServlet(paths = {"/bin/cqsm/history"}, methods = {"GET"})
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM History List Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM History List Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class HistoryListServlet extends SlingAllMethodsServlet {
 

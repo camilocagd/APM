@@ -72,7 +72,7 @@ import org.slf4j.LoggerFactory;
 
 @Component(immediate = true)
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM History Service"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM History Service"),
 	@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class HistoryImpl implements History {
 
@@ -80,11 +80,11 @@ public class HistoryImpl implements History {
 
 	private static final String HISTORY_PATH = "/conf/apm/history";
 
-	private static final String HISTORY_COMPONENT = "cqsmHistory";
+	private static final String HISTORY_COMPONENT = "apmHistory";
 
 	private static final String HISTORY_COMPONENT_RESOURCE_TYPE = "cqsm/core/components/cqsmHistory";
 
-	private static final String ENTRY_PATH = "/conf/apm/history/jcr:content/cqsmHistory";
+	private static final String ENTRY_PATH = "/conf/apm/history/jcr:content/apmHistory";
 
 	public static final String REPLICATE_ACTION = "com/cognifide/actions/cqsm/history/replicate";
 
@@ -254,7 +254,7 @@ public class HistoryImpl implements History {
 		if (historyPage == null) {
 			boolean autoCommit = true;
 			historyPage = pageManager
-				.create("/conf/apm", "history", "/apps/cqsm/core/templates/historyTemplate", "History",
+				.create("/conf/apm", "history", "/apps/apm/core/templates/historyTemplate", "History",
 					autoCommit);
 		}
 		return historyPage;

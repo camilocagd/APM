@@ -48,7 +48,7 @@ public interface ScriptStorage {
 
 	/**
 	 * Batch save multiple scripts at once (with some 'include' dependencies between them)
-	 * Map definition: key - should be a file name, value - file content in CQSM language
+	 * Map definition: key - should be a file name, value - file content in APM language
 	 */
 	List<Script> saveAll(Map<String, InputStream> files, boolean overwrite, ResourceResolver resolver)
 			throws RepositoryException, PersistenceException;
