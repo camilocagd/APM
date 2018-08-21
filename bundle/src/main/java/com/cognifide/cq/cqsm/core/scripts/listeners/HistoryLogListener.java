@@ -27,7 +27,7 @@ import com.cognifide.cq.cqsm.api.scripts.EventListener;
 import com.cognifide.cq.cqsm.api.scripts.Script;
 import com.cognifide.cq.cqsm.api.scripts.ScriptManager;
 import com.cognifide.cq.cqsm.api.utils.InstanceTypeProvider;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 
 import org.apache.felix.scr.annotations.Activate;
 import org.apache.felix.scr.annotations.Component;
@@ -40,7 +40,7 @@ import org.osgi.framework.Constants;
 @Component
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM History Log Service"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class HistoryLogListener implements EventListener {
 
 	@Reference

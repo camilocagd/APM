@@ -2,7 +2,7 @@
  * ========================LICENSE_START=================================
  * AEM Permission Management
  * %%
- * Copyright (C) 2013 Cognifide Limited
+ * Copyright (C) 2018 Cognifide Limited
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@
  */
 package com.cognifide.cq.cqsm.core;
 
-public final class Cqsm {
+public final class Apm {
 
-	private Cqsm() {
+	private Apm() {
 		// util constructor
 	}
 

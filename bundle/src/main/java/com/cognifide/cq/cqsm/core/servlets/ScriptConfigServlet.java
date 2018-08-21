@@ -23,7 +23,7 @@ import com.cognifide.cq.cqsm.api.scripts.ExecutionMode;
 import com.cognifide.cq.cqsm.api.scripts.ModifiableScript;
 import com.cognifide.cq.cqsm.api.scripts.Script;
 import com.cognifide.cq.cqsm.api.scripts.ScriptFinder;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.scripts.ModifiableScriptWrapper;
 import com.cognifide.cq.cqsm.core.utils.ServletUtils;
 
@@ -48,7 +48,7 @@ import javax.servlet.http.HttpServletResponse;
 @SlingServlet(paths = {"/bin/cqsm/scriptConfig"}, methods = {"POST"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Execution Mode Servlet"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptConfigServlet extends SlingAllMethodsServlet {
 
 	@Reference

@@ -20,7 +20,7 @@
 package com.cognifide.cq.cqsm.core.servlets;
 
 import com.cognifide.cq.cqsm.api.actions.ActionFactory;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.utils.ServletUtils;
 
 import org.apache.felix.scr.annotations.Properties;
@@ -40,7 +40,7 @@ import javax.servlet.ServletException;
 @SlingServlet(resourceTypes = "cqsm/core/renderers/referenceRenderer", selectors = "action", extensions = "json")
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Action Reference Servlet"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ReferenceServlet extends SlingAllMethodsServlet {
 
 	@Reference

@@ -22,7 +22,7 @@ package com.cognifide.cq.cqsm.core.servlets;
 import com.cognifide.cq.cqsm.api.scripts.Script;
 import com.cognifide.cq.cqsm.api.scripts.ScriptFinder;
 import com.cognifide.cq.cqsm.api.scripts.ScriptStorage;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.utils.ServletUtils;
 
 import org.apache.commons.lang.StringUtils;
@@ -50,7 +50,7 @@ import javax.servlet.http.HttpServletResponse;
 @SlingServlet(paths = {"/bin/cqsm/remove"}, methods = {"POST"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Remove Scripts Servlet"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptRemoveServlet extends SlingAllMethodsServlet {
 
 	@Reference

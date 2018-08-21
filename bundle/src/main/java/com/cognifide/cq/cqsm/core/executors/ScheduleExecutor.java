@@ -24,7 +24,7 @@ import com.cognifide.cq.cqsm.api.logger.Progress;
 import com.cognifide.cq.cqsm.api.scripts.Script;
 import com.cognifide.cq.cqsm.api.scripts.ScriptFinder;
 import com.cognifide.cq.cqsm.api.scripts.ScriptManager;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.utils.MessagingUtils;
 import com.cognifide.cq.cqsm.core.utils.sling.OperateCallback;
 import com.cognifide.cq.cqsm.core.utils.sling.SlingHelper;
@@ -51,7 +51,7 @@ import static com.cognifide.cq.cqsm.core.scripts.ScriptFilters.filterOnSchedule;
 @Component(immediate = true)
 @Service(Runnable.class)
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Schedule Executor"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME),
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME),
 		@Property(name = "scheduler.expression", value = "0 * * * * ?")})
 public class ScheduleExecutor implements Runnable {
 

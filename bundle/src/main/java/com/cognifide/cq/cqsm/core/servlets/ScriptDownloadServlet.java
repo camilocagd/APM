@@ -19,7 +19,7 @@
  */
 package com.cognifide.cq.cqsm.core.servlets;
 
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.Properties;
@@ -48,7 +48,7 @@ import javax.servlet.ServletException;
 @Service
 // @formatter:off
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM File Download Servlet"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 // @formatter:on
 public class ScriptDownloadServlet extends SlingSafeMethodsServlet {
 

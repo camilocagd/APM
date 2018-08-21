@@ -21,7 +21,7 @@
 
 import com.adobe.granite.ui.components.ds.DataSource;
 import com.adobe.granite.ui.components.ds.SimpleDataSource;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.Service;
@@ -37,13 +37,12 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @SlingServlet(resourceTypes = {"apm/scripts"}, methods = {"GET"})
 @Service
 @Properties({
         @Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Scripts Data Source Servlet"),
-        @Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)
+        @Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)
 })
 public class ScriptsDatasourceServlet extends SlingSafeMethodsServlet{
 

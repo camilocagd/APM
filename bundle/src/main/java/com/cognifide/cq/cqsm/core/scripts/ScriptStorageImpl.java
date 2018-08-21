@@ -27,7 +27,7 @@ import com.cognifide.cq.cqsm.api.scripts.Script;
 import com.cognifide.cq.cqsm.api.scripts.ScriptFinder;
 import com.cognifide.cq.cqsm.api.scripts.ScriptManager;
 import com.cognifide.cq.cqsm.api.scripts.ScriptStorage;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.day.cq.commons.jcr.JcrConstants;
 
 import org.apache.commons.io.FilenameUtils;
@@ -61,7 +61,7 @@ import javax.jcr.ValueFactory;
 @Component
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "Storage accessor for scripts"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 
 public class ScriptStorageImpl implements ScriptStorage {
 
@@ -150,7 +150,7 @@ public class ScriptStorageImpl implements ScriptStorage {
 		String baseName = FilenameUtils.getBaseName(fileName);
 		int num = 1;
 		do {
-			fileName = baseName + ((num > 1) ? ("-" + num) : "") + Cqsm.FILE_EXT;
+			fileName = baseName + ((num > 1) ? ("-" + num) : "") + Apm.FILE_EXT;
 			num++;
 		} while (saveNode.hasNode(fileName));
 

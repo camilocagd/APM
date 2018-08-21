@@ -19,12 +19,11 @@
  */
 package com.cognifide.cq.cqsm.core.servlets;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
 import com.cognifide.cq.cqsm.api.scripts.Script;
 import com.cognifide.cq.cqsm.api.scripts.ScriptStorage;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.scripts.ScriptUtils;
 import com.cognifide.cq.cqsm.core.utils.ServletUtils;
 
@@ -46,7 +45,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.jcr.RepositoryException;
 import javax.servlet.ServletException;
@@ -55,7 +53,7 @@ import javax.servlet.http.HttpServletResponse;
 @SlingServlet(paths = {"/bin/cqsm/fileUpload"}, methods = {"POST"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM File Upload Servlet"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptUploadServlet extends SlingAllMethodsServlet {
 
 	private static final String REDIRECT_URL = "/etc/cqsm.html";

@@ -25,7 +25,7 @@ import com.cognifide.cq.cqsm.api.scripts.EventListener;
 import com.cognifide.cq.cqsm.api.scripts.Script;
 import com.cognifide.cq.cqsm.api.scripts.ScriptFinder;
 import com.cognifide.cq.cqsm.api.scripts.ScriptManager;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.utils.MessagingUtils;
 import com.cognifide.cq.cqsm.core.utils.sling.OperateCallback;
 import com.cognifide.cq.cqsm.core.utils.sling.SlingHelper;
@@ -51,7 +51,7 @@ import static com.cognifide.cq.cqsm.core.scripts.ScriptFilters.filterOnModify;
 
 @Component(immediate = true)
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Script Modification Executor"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ModifyExecutor {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ModifyExecutor.class);

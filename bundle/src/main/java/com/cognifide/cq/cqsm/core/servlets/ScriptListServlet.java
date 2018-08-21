@@ -19,7 +19,7 @@
  */
 package com.cognifide.cq.cqsm.core.servlets;
 
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.models.FileModel;
 import com.cognifide.cq.cqsm.core.models.ImportInitModel;
 import com.cognifide.cq.cqsm.core.utils.ServletUtils;
@@ -42,7 +42,7 @@ import javax.servlet.ServletException;
 @Service
 @Properties({
 		@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM List Servlet"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)
 })
 public class ScriptListServlet extends SlingAllMethodsServlet {
 

@@ -28,7 +28,7 @@ import com.cognifide.cq.cqsm.api.history.ModifiableEntryBuilder;
 import com.cognifide.cq.cqsm.api.logger.Progress;
 import com.cognifide.cq.cqsm.api.scripts.Script;
 import com.cognifide.cq.cqsm.api.utils.InstanceTypeProvider;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.progress.ProgressHelper;
 import com.cognifide.cq.cqsm.core.scripts.ScriptContent;
 import com.cognifide.cq.cqsm.core.utils.sling.OperateCallback;
@@ -73,7 +73,7 @@ import org.slf4j.LoggerFactory;
 @Component(immediate = true)
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM History Service"),
-	@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+	@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class HistoryImpl implements History {
 
 	private static final Logger LOG = LoggerFactory.getLogger(HistoryImpl.class);
@@ -210,7 +210,7 @@ public class HistoryImpl implements History {
 
 					//easier to use JCR API here due to jcr:uuid copy constraints
 					Node file = JcrUtil.copy(source.adaptTo(Node.class), child.adaptTo(Node.class), "script");
-					file.addMixin(ScriptContent.CQSM_FILE);
+					file.addMixin(ScriptContent.APM_FILE);
 					resolver.commit();
 					result = resolver.getResource(child.getPath()).adaptTo(Entry.class);
 				} catch (RepositoryException | WCMException | PersistenceException e) {

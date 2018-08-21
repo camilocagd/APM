@@ -20,7 +20,7 @@
 package com.cognifide.cq.cqsm.core.servlets;
 
 import com.cognifide.cq.cqsm.api.history.Entry;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.models.ExecutionHistoryModel;
 import com.cognifide.cq.cqsm.core.utils.ServletUtils;
 
@@ -41,7 +41,7 @@ import javax.servlet.ServletException;
 @SlingServlet(paths = {"/bin/cqsm/history"}, methods = {"GET"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM History List Servlet"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class HistoryListServlet extends SlingAllMethodsServlet {
 
 	@Override

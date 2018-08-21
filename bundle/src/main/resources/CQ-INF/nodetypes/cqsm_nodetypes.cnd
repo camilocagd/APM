@@ -17,16 +17,16 @@
  * limitations under the License.
  * =========================LICENSE_END==================================
  */
-<cqsm='http://www.cognifide.com/cqsm/1.0'>
+<apm='http://www.cognifide.com/apm/1.0'>
 
-[cqsm:File]
+[apm:File]
  mixin
-  - cqsm:fileId (string)
-  - cqsm:verified (string)
-  - cqsm:dryRunSuccessful (string)
-  - cqsm:executionMode (string)
-  - cqsm:executionSchedule (date)
-  - cqsm:executionLast (date)
-  - cqsm:dryRunLast (date)
-  - cqsm:executionEnabled (boolean)
-  - cqsm:publishRun (boolean)
+  - apm:fileId (string)
+  - apm:verified (string)
+  - apm:dryRunSuccessful (string)
+  - apm:executionMode (string)
+  - apm:executionSchedule (date)
+  - apm:executionLast (date)
+  - apm:dryRunLast (date)
+  - apm:executionEnabled (boolean)
+  - apm:publishRun (boolean)

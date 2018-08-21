@@ -22,7 +22,7 @@ package com.cognifide.cq.cqsm.core.servlets;
 import com.cognifide.cq.cqsm.api.executors.Mode;
 import com.cognifide.cq.cqsm.api.logger.Progress;
 import com.cognifide.cq.cqsm.api.scripts.ScriptManager;
-import com.cognifide.cq.cqsm.core.Cqsm;
+import com.cognifide.cq.cqsm.core.Apm;
 import com.cognifide.cq.cqsm.core.utils.ServletUtils;
 
 import org.apache.commons.lang.StringUtils;
@@ -47,7 +47,7 @@ import javax.servlet.http.HttpServletResponse;
 @SlingServlet(paths = {"/bin/cqsm/validate"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Validation Servlet"),
-		@Property(name = Constants.SERVICE_VENDOR, value = Cqsm.VENDOR_NAME)})
+		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptValidationServlet extends SlingAllMethodsServlet {
 
 	@Reference

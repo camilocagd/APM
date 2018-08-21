@@ -165,7 +165,7 @@ public class ReplicationExecutor implements JobConsumer, ResourceChangeListener 
 		Boolean result = false;
 		Set<String> addedPropertyNames = change.getAddedPropertyNames();
 		if (addedPropertyNames != null) {
-			result = addedPropertyNames.contains(ScriptContent.CQSM_VERIFIED);
+			result = addedPropertyNames.contains(ScriptContent.APM_VERIFIED);
 		}
 		return result;
 	}
