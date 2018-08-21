@@ -133,9 +133,9 @@ public class ScriptStorageImpl implements ScriptStorage {
 
 			contentNode.setProperty(JcrConstants.JCR_DATA, binary);
 			contentNode.setProperty(JcrConstants.JCR_ENCODING, SCRIPT_ENCODING.name());
-			removeProp(contentNode, ScriptContent.CQSM_DRY_RUN_LAST);
-			removeProp(contentNode, ScriptContent.CQSM_DRY_RUN_SUCCESSFUL);
-			removeProp(contentNode, ScriptContent.CQSM_EXECUTION_LAST);
+			removeProp(contentNode, ScriptContent.APM_DRY_RUN_LAST);
+			removeProp(contentNode, ScriptContent.APM_DRY_RUN_SUCCESSFUL);
+			removeProp(contentNode, ScriptContent.APM_EXECUTION_LAST);
 			JcrUtils.setLastModified(contentNode, Calendar.getInstance());
 			session.save();
 			result = scriptFinder.find(fileNode.getPath(), resolver);
