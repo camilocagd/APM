@@ -39,7 +39,7 @@ import javax.servlet.ServletException;
 
 @SlingServlet(resourceTypes = "apm/core/renderers/definitionsRenderer", selectors = "action", extensions = "json")
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Definitions Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Definitions Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class DefinitionsServlet extends SlingAllMethodsServlet {
 

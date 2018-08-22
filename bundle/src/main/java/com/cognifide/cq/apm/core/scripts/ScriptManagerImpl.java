@@ -80,7 +80,7 @@ import javax.jcr.Session;
 
 @Component
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Script Manager Service"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Script Manager Service"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptManagerImpl implements ScriptManager {
 

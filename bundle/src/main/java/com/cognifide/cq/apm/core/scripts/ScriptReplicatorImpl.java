@@ -55,13 +55,13 @@ import javax.jcr.Session;
 
 @Component
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Script Replicator Service"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Script Replicator Service"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptReplicatorImpl implements ScriptReplicator {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ScriptReplicatorImpl.class);
 
-	private static final String ROOT_PATH = "/etc/apm/import/jcr:content";
+	private static final String ROOT_PATH = "/etc/cqsm/import/jcr:content";
 
 	private static final String SCRIPT_PATH = ROOT_PATH + "/cqsmImport";
 

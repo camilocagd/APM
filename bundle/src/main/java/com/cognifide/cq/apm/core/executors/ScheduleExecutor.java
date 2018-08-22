@@ -50,7 +50,7 @@ import static com.cognifide.cq.apm.core.scripts.ScriptFilters.filterOnSchedule;
 
 @Component(immediate = true)
 @Service(Runnable.class)
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Schedule Executor"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Schedule Executor"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME),
 		@Property(name = "scheduler.expression", value = "0 * * * * ?")})
 public class ScheduleExecutor implements Runnable {

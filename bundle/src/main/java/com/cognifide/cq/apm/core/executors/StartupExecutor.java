@@ -50,7 +50,7 @@ import javax.jcr.RepositoryException;
 import static com.cognifide.cq.apm.core.scripts.ScriptFilters.filterOnStart;
 
 @Component(immediate = true)
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Startup Executor"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Startup Executor"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class StartupExecutor {
 

@@ -47,7 +47,7 @@ import javax.servlet.ServletException;
 @SlingServlet(paths = {"/bin/apm/run-background"}, methods = {"GET", "POST"})
 @Service
 @Properties({
-		@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Servlet for running scripts in background and checking theirs status"),
+		@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Servlet for running scripts in background and checking theirs status"),
 		@Property(name = Constants.SERVICE_VENDOR, value = "Cognifide Ltd")})
 public class ScriptRunBackgroundServlet extends SlingAllMethodsServlet {
 

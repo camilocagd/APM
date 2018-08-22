@@ -49,7 +49,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SlingServlet(paths = {"/bin/apm/remove"}, methods = {"POST"})
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Remove Scripts Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Remove Scripts Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptRemoveServlet extends SlingAllMethodsServlet {
 

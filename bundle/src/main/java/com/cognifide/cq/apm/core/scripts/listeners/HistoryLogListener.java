@@ -39,7 +39,7 @@ import org.osgi.framework.Constants;
 
 @Component
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM History Log Service"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM History Log Service"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class HistoryLogListener implements EventListener {
 

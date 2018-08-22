@@ -47,7 +47,7 @@ import javax.servlet.ServletException;
 @SlingServlet(paths = {"/bin/apm/fileDownload"}, methods = {"GET"})
 @Service
 // @formatter:off
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM File Download Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM File Download Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 // @formatter:on
 public class ScriptDownloadServlet extends SlingSafeMethodsServlet {

@@ -49,7 +49,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SlingServlet(paths = {"/bin/apm/replicate"}, methods = {"GET"})
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Replicate Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Replicate Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptReplicationServlet extends SlingSafeMethodsServlet {
 

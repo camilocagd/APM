@@ -48,7 +48,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SlingServlet(paths = {"/bin/apm/run"}, methods = {"POST"})
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Run Servlet"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Run Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptRunServlet extends SlingAllMethodsServlet {
 

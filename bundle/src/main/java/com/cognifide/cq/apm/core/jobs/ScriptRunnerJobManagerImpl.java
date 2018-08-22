@@ -38,7 +38,7 @@ import java.util.Map;
 @Component(immediate = true)
 @Service
 @Properties({
-		@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Service for running scripts in background and checking theirs status"),
+		@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Service for running scripts in background and checking theirs status"),
 		@Property(name = Constants.SERVICE_VENDOR, value = "Cognifide Ltd")})
 public class ScriptRunnerJobManagerImpl implements ScriptRunnerJobManager {
 

@@ -44,7 +44,7 @@ import java.util.List;
 
 @Component
 @Service
-@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "CQSM Script Finder Service"),
+@Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Script Finder Service"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptFinderImpl implements ScriptFinder {
 

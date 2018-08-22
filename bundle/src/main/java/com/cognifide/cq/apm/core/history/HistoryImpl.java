@@ -82,7 +82,7 @@ public class HistoryImpl implements History {
 
 	private static final String HISTORY_COMPONENT = "apmHistory";
 
-	private static final String HISTORY_COMPONENT_RESOURCE_TYPE = "apm/core/components/cqsmHistory";
+	private static final String HISTORY_COMPONENT_RESOURCE_TYPE = "cqsm/core/components/cqsmHistory";
 
 	private static final String ENTRY_PATH = "/conf/apm/history/jcr:content/apmHistory";
 

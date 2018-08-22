@@ -25,7 +25,7 @@ import com.cognifide.cq.apm.api.actions.annotations.Mapping;
 
 public final class DefineMapper extends BasicActionMapper {
 
-	public static final String REFERENCE = "Create definitions holding values used multiple times across CQSM script.\n"
+	public static final String REFERENCE = "Create definitions holding values used multiple times across APM script.\n"
 			+ "To access definition value ${definition_name} syntax can be used."
 			+ " Value must be specified between single quotes e.g 'my value'.";
 

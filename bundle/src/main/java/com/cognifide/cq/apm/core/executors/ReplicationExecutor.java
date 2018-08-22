@@ -66,7 +66,7 @@ import javax.jcr.RepositoryException;
 })
 public class ReplicationExecutor implements JobConsumer, ResourceChangeListener {
 
-	static final String JOB_NAME = "com/cognifide/cq/cqsm/core/executors/replication/executor";
+	static final String JOB_NAME = "com/cognifide/cq/apm/core/executors/replication/executor";
 
 	private static final Logger LOG = LoggerFactory.getLogger(ReplicationExecutor.class);
 
