@@ -23,18 +23,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <artifactId>cqsm-content</artifactId>
+    <artifactId>apm-content</artifactId>
     <packaging>content-package</packaging>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>cqsm-bundle</artifactId>
+            <artifactId>apm-bundle</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
     <parent>
         <groupId>com.cognifide.cq</groupId>
-        <artifactId>cqsm</artifactId>
+        <artifactId>apm</artifactId>
         <version>3.0.4-SNAPSHOT</version>
     </parent>
 
@@ -75,7 +75,7 @@
                     <embeddeds>
                         <embedded>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>cqsm-bundle</artifactId>
+                            <artifactId>apm-bundle</artifactId>
                             <target>/apps/cqsm/install</target>
                         </embedded>
                         <embedded>

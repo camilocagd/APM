@@ -96,7 +96,7 @@
         $.ajax({
           type: "POST",
           async: false,
-          url: "/bin/cqsm/fileUpload?overwrite=" + this.getOverwrite(),
+          url: "/bin/apm/fileUpload?overwrite=" + this.getOverwrite(),
           dataType: "json",
           processData: false,
           contentType: 'multipart/form-data; boundary=' + boundary,
@@ -180,7 +180,7 @@
           $.ajax({
             type: "POST",
             async: false,
-            url: "/bin/cqsm/validate",
+            url: "/bin/apm/validate",
             data: {
               content: self.$textArea.val()
             },

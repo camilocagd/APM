@@ -17,7 +17,7 @@ The automation is particulary useful for the [[check actions|CheckActions]] base
 
 **Request**
 ```bash
-curl -i -u admin:admin http://localhost:4502/bin/cqsm/list
+curl -i -u admin:admin http://localhost:4502/bin/apm/list
 ```
 Request has no available parameters to set.
 
@@ -64,7 +64,7 @@ Response returns every properties set on the request:
 #### How to upload script?
 **Request**
 ```bash
-curl -i -u admin:admin -H "file=permissions.cqsm" -X POST http://localhost:4502/bin/cqsm/fileUpload -F file=@"misc/example scripts/permissions.cqsm"
+curl -i -u admin:admin -H "file=permissions.cqsm" -X POST http://localhost:4502/bin/apm/fileUpload -F file=@"misc/example scripts/permissions.cqsm"
 ```
 **Response**
 ```bash
@@ -81,7 +81,7 @@ curl -i -u admin:admin -H "file=permissions.cqsm" -X POST http://localhost:4502/
 **Request**
 
 ```bash
-curl -i -u admin:admin -d "file=permissions.cqsm&mode=DRY_RUN" -X POST http://localhost:4502/bin/cqsm/run
+curl -i -u admin:admin -d "file=permissions.cqsm&mode=DRY_RUN" -X POST http://localhost:4502/bin/apm/run
 ```
 Available modes to use:
 * DRY_RUN,
@@ -93,7 +93,7 @@ Available modes to use:
   ...
   {
     "authorizable": "test_group",
-    "actionName": "com.cognifide.cq.cqsm.foundation.actions.deny.Deny",
+    "actionName": "com.cognifide.cq.apm.foundation.actions.deny.Deny",
     "parameters": "/content/geometrixx/it /* ALL",
     "messages": [
       {
@@ -109,13 +109,13 @@ Available modes to use:
 > This operation on large content may last few minutes and in that case it may result in network read timeout exception. If such error occurs please change to asynchronous model.
 
 #### How to run script asynchronously?
-To run asynchronously a user has to make `POST` request to `/bin/cqsm/run-background`. In the result there will be `id` of the job, which could be used later to ask for the job status.
+To run asynchronously a user has to make `POST` request to `/bin/apm/run-background`. In the result there will be `id` of the job, which could be used later to ask for the job status.
 
-To ask for a job status user have to make `GET` request to `/bin/cqsm/run-background` with `id` parameter. If the job is still running in the result the json object has type property with running value. After another requests the json object with type property finished should be returned, the result will contain also all messages for each instruction execution.
+To ask for a job status user have to make `GET` request to `/bin/apm/run-background` with `id` parameter. If the job is still running in the result the json object has type property with running value. After another requests the json object with type property finished should be returned, the result will contain also all messages for each instruction execution.
 
 **Request**
 ```bash
-curl -i -u admin:admin -d "file=permissions.cqsm&mode=DRY_RUN" -X POST http://localhost:4502/bin/cqsm/run-background
+curl -i -u admin:admin -d "file=permissions.cqsm&mode=DRY_RUN" -X POST http://localhost:4502/bin/apm/run-background
 ```
 **Response**
 ```bash
@@ -128,7 +128,7 @@ curl -i -u admin:admin -d "file=permissions.cqsm&mode=DRY_RUN" -X POST http://lo
 
 **Request**
 ```bash
-curl -i -u admin:admin -d "id=2016/4/22/9/42/0ea10a55-2dbb-4c1b-979c-98b9f1f7a73d_20" -X GET http://localhost:4502/bin/cqsm/run-background
+curl -i -u admin:admin -d "id=2016/4/22/9/42/0ea10a55-2dbb-4c1b-979c-98b9f1f7a73d_20" -X GET http://localhost:4502/bin/apm/run-background
 ```
 **Response**
 ```bash
@@ -139,7 +139,7 @@ curl -i -u admin:admin -d "id=2016/4/22/9/42/0ea10a55-2dbb-4c1b-979c-98b9f1f7a73
 
 **Request**
 ```bash
-curl -i -u admin:admin -d "id=2016/4/22/9/42/0ea10a55-2dbb-4c1b-979c-98b9f1f7a73d_20" -X GET http://localhost:4502/bin/cqsm/run-background
+curl -i -u admin:admin -d "id=2016/4/22/9/42/0ea10a55-2dbb-4c1b-979c-98b9f1f7a73d_20" -X GET http://localhost:4502/bin/apm/run-background
 ```
 **Response**
 ```bash
@@ -180,7 +180,7 @@ curl -i -u admin:admin -d "id=2016/4/22/9/42/0ea10a55-2dbb-4c1b-979c-98b9f1f7a73
 #### How to validate script?
 **Request**
 ```bash
-curl -i -u admin:admin -d "content=CREATE USER foo" -X POST http://localhost:4502/bin/cqsm/validate
+curl -i -u admin:admin -d "content=CREATE USER foo" -X POST http://localhost:4502/bin/apm/validate
 ```
 **Response**
 ```bash
@@ -192,7 +192,7 @@ curl -i -u admin:admin -d "content=CREATE USER foo" -X POST http://localhost:450
 
 **Request**
 ```bash
-curl -i -u admin:admin -d "content=IMPORT nonexisting.cqsm" -X POST http://localhost:4502/bin/cqsm/validate
+curl -i -u admin:admin -d "content=IMPORT nonexisting.cqsm" -X POST http://localhost:4502/bin/apm/validate
 ```
 **Response**
 ```bash
@@ -206,7 +206,7 @@ curl -i -u admin:admin -d "content=IMPORT nonexisting.cqsm" -X POST http://local
 #### How to remove script?
 **Request**
 ```bash
-curl -i -u admin:admin -d "file=permissions.cqsm" -X POST http://localhost:4502/bin/cqsm/remove
+curl -i -u admin:admin -d "file=permissions.cqsm" -X POST http://localhost:4502/bin/apm/remove
 ```
 **Response**
 ```bash
@@ -218,7 +218,7 @@ curl -i -u admin:admin -d "file=permissions.cqsm" -X POST http://localhost:4502/
 
 **Request**
 ```bash
-curl -i -u admin:admin -d "confirmation=true" -X POST http://localhost:4502/bin/cqsm/remove
+curl -i -u admin:admin -d "confirmation=true" -X POST http://localhost:4502/bin/apm/remove
 ```
 **Response**
 ```bash
@@ -239,7 +239,7 @@ History can be filtered using optional **filter** parameter. Available filters:
 
 **Request**
 ```bash
-curl -i -u admin:admin -X GET http://localhost:4502/bin/cqsm/history?filter=publish
+curl -i -u admin:admin -X GET http://localhost:4502/bin/apm/history?filter=publish
 ```
 **Response**
 ```bash

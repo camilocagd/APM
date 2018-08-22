@@ -17,7 +17,7 @@
 * limitations under the License.
 * =========================LICENSE_END==================================
 */-->
-<sly data-sly-use.item="com.cognifide.cq.cqsm.core.models.ExecutionModel"/>
+<sly data-sly-use.item="com.cognifide.cq.apm.core.models.ExecutionModel"/>
 <coral-dialog id="summaryDialog" variant="info">
   <coral-dialog-header id="summaryDialogHeader">The result of ${item.entry.fileName} script by ${item.entry.executor} on
     ${item.entry.instanceType} instance
@@ -78,7 +78,7 @@
     </table>
   </coral-dialog-content>
   <coral-dialog-footer>
-    <form method="POST" action="/bin/cqsm/executionResultDownload">
+    <form method="POST" action="/bin/apm/executionResultDownload">
       <input type="hidden" name="filename" value="${item.entry.executionResultFileName}">
       <input type="hidden" name="content" value="${item.entry.executionSummaryJson}">
       <button type="submit" is="coral-button" icon="download" iconsize="S" class="coral-Button coral-Button--secondary"

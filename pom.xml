@@ -24,7 +24,7 @@
 
     <!-- The Basics -->
     <groupId>com.cognifide.cq</groupId>
-    <artifactId>cqsm</artifactId>
+    <artifactId>apm</artifactId>
     <version>3.0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
     <dependencyManagement>

@@ -59,7 +59,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/bin/cqsm/run-background?file=" + scriptPath + "&mode="
+            url: "/bin/apm/run-background?file=" + scriptPath + "&mode="
             + mode,
             dataType: "html",
             success: function (data) {
@@ -68,7 +68,7 @@
                 (function checkStatus(jobId) {
                     $.ajax({
                         type: "GET",
-                        url: "/bin/cqsm/run-background?id=" + jobId,
+                        url: "/bin/apm/run-background?id=" + jobId,
                         dataType: "html",
                         success: function (data) {
                             var dataObject = JSON.parse(data);
@@ -95,7 +95,7 @@
 
         $.ajax({
             type: "GET",
-            url: "/bin/cqsm/replicate?run=publish&fileName=" + fileName,
+            url: "/bin/apm/replicate?run=publish&fileName=" + fileName,
             dataType: "json",
             success: function (data) {
                 console.log("publish response: " + JSON.stringify(data));

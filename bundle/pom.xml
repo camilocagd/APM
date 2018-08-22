@@ -22,7 +22,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
     <modelVersion>4.0.0</modelVersion>
     <!-- The Basics -->
-    <artifactId>cqsm-bundle</artifactId>
+    <artifactId>apm-bundle</artifactId>
     <packaging>bundle</packaging>
     <dependencies>
         <!-- AEM API -->
@@ -143,7 +143,7 @@
     </dependencies>
     <parent>
         <groupId>com.cognifide.cq</groupId>
-        <artifactId>cqsm</artifactId>
+        <artifactId>apm</artifactId>
         <version>3.0.4-SNAPSHOT</version>
     </parent>
     <!-- Build Settings -->
@@ -168,16 +168,16 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            com.cognifide.cq.cqsm.foundation.actions.*;com.cognifide.cq.cqsm.api.*;com.cognifide.cq.cqsm.core.models.*;com.cognifide.cq.cqsm.core.automaticexecutor.*;version="${project.version}"
+                            com.cognifide.cq.apm.foundation.actions.*;com.cognifide.cq.apm.api.*;com.cognifide.cq.apm.core.models.*;com.cognifide.cq.apm.core.automaticexecutor.*;version="${project.version}"
                         </Export-Package>
                         <Import-Package>!sun.misc,*</Import-Package>
                         <Bundle-Name>${project.name}</Bundle-Name>
-                        <Bundle-SymbolicName>com.cognifide.cq.cqsm</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>com.cognifide.cq.apm</Bundle-SymbolicName>
                         <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
                         <Sling-Nodetypes>CQ-INF/nodetypes/apm_nodetypes.cnd</Sling-Nodetypes>
-                        <Sling-Model-Packages>com.cognifide.cq.cqsm.core.models,com.cognifide.cq.cqsm.core.scripts,com.cognifide.cq.cqsm.api.history</Sling-Model-Packages>
+                        <Sling-Model-Packages>com.cognifide.cq.apm.core.models,com.cognifide.cq.apm.core.scripts,com.cognifide.cq.apm.api.history</Sling-Model-Packages>
                         <Embed-Dependency>gson,guava</Embed-Dependency>
-                        <CQ-Security-Management-Actions>com.cognifide.cq.cqsm.foundation.actions</CQ-Security-Management-Actions>
+                        <CQ-Security-Management-Actions>com.cognifide.cq.apm.foundation.actions</CQ-Security-Management-Actions>
                     </instructions>
                 </configuration>
             </plugin>

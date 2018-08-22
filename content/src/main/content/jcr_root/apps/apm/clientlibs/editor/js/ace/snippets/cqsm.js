@@ -35,7 +35,7 @@ ace.define("ace/snippets/cqsm",["require","exports","module"], function(e, t, n)
 	}
 
 	function generateReference() {
-		var references = loadJson("/etc/cqsm/pages/reference/jcr:content.action.json");
+		var references = loadJson("/etc/apm/pages/reference/jcr:content.action.json");
 
 		var snippetText = "";
 		for (var i = 0; i < references.length; i++) {
@@ -60,7 +60,7 @@ ace.define("ace/snippets/cqsm",["require","exports","module"], function(e, t, n)
 	}
 
 	function generateDefinitions() {
-		var definitions = loadJson("/etc/cqsm/pages/definitions/jcr:content.action.json");
+		var definitions = loadJson("/etc/apm/pages/definitions/jcr:content.action.json");
 		
 		var snippetText = "";
 		for (var name in definitions) {
@@ -79,5 +79,5 @@ ace.define("ace/snippets/cqsm",["require","exports","module"], function(e, t, n)
 	}
 
 	t.snippetText = generateReference() + "\n" + generateDefinitions();
-	t.scope = "cqsm";
+	t.scope = "apm";
 })
