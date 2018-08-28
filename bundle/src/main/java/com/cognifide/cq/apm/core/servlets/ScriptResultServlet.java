@@ -21,6 +21,13 @@ package com.cognifide.cq.apm.core.servlets;
 
 import com.cognifide.cq.apm.core.Apm;
 
+import static com.cognifide.cq.apm.core.servlets.ScriptResultServlet.EXECUTION_RESULT_SERVLET_PATH;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import javax.servlet.ServletException;
 import org.apache.commons.io.IOUtils;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -40,7 +47,7 @@ import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 
-@SlingServlet(paths = {"/bin/apm/executionResultDownload"}, methods = {"POST"})
+@SlingServlet(paths = {EXECUTION_RESULT_SERVLET_PATH}, methods = {"POST"})
 @Service
 // @formatter:off
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "Execution result Servlet"),
@@ -51,6 +58,8 @@ public class ScriptResultServlet extends SlingAllMethodsServlet {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ScriptResultServlet.class);
 
 	private static final int BYTES_DOWNLOAD = 1024;
+
+	public static final String EXECUTION_RESULT_SERVLET_PATH = "/bin/apm/executionResultDownload";
 
 	@Override
 	protected void doPost(final SlingHttpServletRequest request, final SlingHttpServletResponse response)

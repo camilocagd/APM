@@ -62,7 +62,7 @@ public class ProgressImpl implements Progress {
 
 	@Override
 	public boolean isSuccess() {
-		return ProgressHelper.calculateSuccess(entries);
+		return ProgressHelper.hasNoErrors(entries);
 	}
 
 	@Override

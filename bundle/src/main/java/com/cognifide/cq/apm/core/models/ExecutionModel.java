@@ -22,13 +22,13 @@ package com.cognifide.cq.apm.core.models;
 import com.cognifide.cq.apm.api.history.Entry;
 import com.cognifide.cq.apm.core.history.History;
 
+import static com.cognifide.cq.apm.core.servlets.ScriptResultServlet.EXECUTION_RESULT_SERVLET_PATH;
+
+import javax.inject.Inject;
+import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
-
-import javax.inject.Inject;
-
-import lombok.Getter;
 
 @Model(adaptables = SlingHttpServletRequest.class)
 public class ExecutionModel {
@@ -41,4 +41,7 @@ public class ExecutionModel {
 		entry = history.find(request.getRequestPathInfo().getSuffix());
 	}
 
+	public String getResultDownloadActionPath() {
+		return EXECUTION_RESULT_SERVLET_PATH;
+	}
 }

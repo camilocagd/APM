@@ -74,7 +74,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
@@ -171,11 +170,11 @@ public class ScriptManagerImpl implements ScriptManager {
 			modifiableScript.setDryRunStatus(success);
 		}
 
-		if (mode.equals(Mode.VALIDATION)) {
+		if (Mode.VALIDATION.equals(mode)) {
 			modifiableScript.setValid(success);
 		}
 
-		if (Mode.DRY_RUN.equals(mode)){
+		if (Mode.DRY_RUN.equals(mode)) {
 			modifiableScript.setDryRunExecution(new Date());
 		}
 	}

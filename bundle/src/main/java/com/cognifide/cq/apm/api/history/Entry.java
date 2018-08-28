@@ -27,23 +27,28 @@ import com.cognifide.cq.apm.core.progress.ProgressHelper;
 import com.google.common.collect.ComparisonChain;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@EqualsAndHashCode
 public class Entry implements Comparable<Entry> {
 
 	public static final String SCRIPT_HISTORY_FILE_NAME = "script";
 
 	private static final String EXECUTION = "execution-result";
+
+	private static final String HISTORY_PAGE_DATE_FORMAT = "MMM dd, yyyy hh:mm:ss a";
 
 	@Inject
 	@Getter
@@ -52,6 +57,9 @@ public class Entry implements Comparable<Entry> {
 	@Inject
 	@Getter
 	private Date executionTime;
+
+	@Getter
+	private String executionTimeFormatted;
 
 	@Inject
 	@Getter
@@ -94,6 +102,9 @@ public class Entry implements Comparable<Entry> {
 	private Date lastModified;
 
 	@Getter
+	private String lastModifiedTimeFormatted;
+
+	@Getter
 	private Boolean isRunSuccessful;
 
 	@Getter
@@ -101,6 +112,9 @@ public class Entry implements Comparable<Entry> {
 
 	@Getter
 	private Date lastDryExecution;
+
+	@Getter
+	private String lastDryExecutionTimeFormatted;
 
 	public Entry(Resource resource) {
 		this.path = resource.getPath();
@@ -110,17 +124,6 @@ public class Entry implements Comparable<Entry> {
 	@Override
 	public int compareTo(Entry other) {
 		return ComparisonChain.start().compare(other.executionTime, this.executionTime).result();
-	}
-
-	//FIXME: could be fixed with lombok
-	@Override
-	public int hashCode() {
-		return HashCodeBuilder.reflectionHashCode(this);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 	public String getExecutionResultFileName() {
@@ -146,10 +149,19 @@ public class Entry implements Comparable<Entry> {
 
 	@PostConstruct
 	protected void init() {
+		lastModifiedTimeFormatted = transferDateToHistoryFormat(lastModified);
+		lastDryExecutionTimeFormatted = transferDateToHistoryFormat(lastDryExecution);
+		executionTimeFormatted = transferDateToHistoryFormat(executionTime);
+
 		executor = getExecutorValue();
-		//FIXME api->core relationship
 
 		executionSummary = ProgressHelper.fromJson(executionSummaryJson);
-		this.isRunSuccessful = ProgressHelper.calculateSuccess(executionSummary);
+		this.isRunSuccessful = ProgressHelper.hasNoErrors(executionSummary);
+	}
+
+	private String transferDateToHistoryFormat(Date date) {
+		return Optional.ofNullable(date)
+				.map(dateVal -> DateFormatUtils.format(dateVal, HISTORY_PAGE_DATE_FORMAT, Locale.getDefault()))
+				.orElse(StringUtils.EMPTY);
 	}
 }

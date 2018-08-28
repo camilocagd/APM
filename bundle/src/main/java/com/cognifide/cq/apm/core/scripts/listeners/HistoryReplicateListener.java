@@ -29,13 +29,12 @@ import com.cognifide.cq.apm.api.scripts.Script;
 import com.cognifide.cq.apm.api.scripts.ScriptManager;
 import com.cognifide.cq.apm.api.utils.InstanceTypeProvider;
 
+import javax.jcr.RepositoryException;
 import org.apache.felix.scr.annotations.Activate;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.jcr.RepositoryException;
 
 @Component
 public class HistoryReplicateListener implements EventListener {

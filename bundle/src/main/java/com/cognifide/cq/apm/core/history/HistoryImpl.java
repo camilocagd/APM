@@ -41,16 +41,16 @@ import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.day.cq.wcm.api.WCMException;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import org.apache.commons.lang.StringUtils;
@@ -100,16 +100,16 @@ public class HistoryImpl implements History {
 	@Override
 	public Entry log(Script script, Mode mode, Progress progressLogger) {
 		InstanceDetails.InstanceType instanceDetails = instanceTypeProvider.isOnAuthor() ?
-			InstanceDetails.InstanceType.AUTHOR :
-			InstanceDetails.InstanceType.PUBLISH;
+				InstanceDetails.InstanceType.AUTHOR :
+				InstanceDetails.InstanceType.PUBLISH;
 		return log(script, mode, progressLogger, instanceDetails, getHostname(), Calendar.getInstance());
 	}
 
 	@Override
 	public Entry logRemote(Script script, Mode mode, Progress progressLogger, InstanceDetails instanceDetails,
-		Calendar executionTime) {
+			Calendar executionTime) {
 		return log(script, mode, progressLogger, instanceDetails.getInstanceType(),
-			instanceDetails.getHostname(), executionTime);
+				instanceDetails.getHostname(), executionTime);
 	}
 
 	@Override
@@ -117,31 +117,39 @@ public class HistoryImpl implements History {
 		return SlingHelper.resolveDefault(resolverFactory, new ResolveCallback<List<Entry>>() {
 			@Override
 			public List<Entry> resolve(ResourceResolver resolver) {
-				List<Entry> result = new LinkedList<>();
-				Iterator<Resource> it = resolver.getResource(HistoryImpl.ENTRY_PATH).listChildren();
-				while (it.hasNext()) {
-					result.add(it.next().adaptTo(Entry.class));
-				}
-				return result;
+				final Resource historyCatalogResource = resolver.getResource(HistoryImpl.ENTRY_PATH);
+				return Optional.ofNullable(historyCatalogResource).map(resource -> {
+					List<Entry> result = Lists.newLinkedList();
+					resource.listChildren()
+							.forEachRemaining(child -> result.add(child.adaptTo(Entry.class)));
+					return result;
+				}).orElseGet(() -> {
+					LOG.warn("History resource can't be found at: {}", HistoryImpl.ENTRY_PATH);
+					return Collections.emptyList();
+				});
 			}
 		}, Collections.<Entry>emptyList());
 	}
 
 	@Override
 	public List<Resource> findAllResource(ResourceResolver resourceResolver) {
-		List<Resource> result = new LinkedList<>();
-		Iterator<Resource> it = resourceResolver.getResource(HistoryImpl.ENTRY_PATH).listChildren();
-		while (it.hasNext()) {
-			result.add(it.next());
-		}
-		return result;
+		final Resource historyCatalogResource = resourceResolver.getResource(HistoryImpl.ENTRY_PATH);
+		return Optional.ofNullable(historyCatalogResource).map(resource -> {
+			List<Resource> result = Lists.newLinkedList();
+			resource.listChildren()
+					.forEachRemaining(result::add);
+			return result;
+		}).orElseGet(() -> {
+			LOG.warn("History resource can't be found at: {}", HistoryImpl.ENTRY_PATH);
+			return Collections.emptyList();
+		});
 	}
 
 	@Override
 	public void replicate(final Entry entry, String userId) throws RepositoryException {
 		if (actionSubmitter == null) {
 			LOG.warn(String.format("History entry '%s' replication cannot be performed on author instance",
-				entry.getPath()));
+					entry.getPath()));
 			return;
 		}
 		SlingHelper.operateTraced(resolverFactory, userId, new OperateCallback() {
@@ -182,31 +190,33 @@ public class HistoryImpl implements History {
 	}
 
 	private Entry log(final Script script, final Mode mode, final Progress progressLogger,
-		final InstanceDetails.InstanceType instanceType, final String hostname,
-		final Calendar executionTime) {
-		return SlingHelper.resolveDefault(resolverFactory, progressLogger.getExecutor(), new ResolveCallback<Entry>() {
-			@Override
-			public Entry resolve(ResourceResolver resolver) {
-				Entry result = null;
-				Resource source = resolver.getResource(script.getPath());
-				ValueMap values = source.getValueMap();
-				try {
-					Page historyPage = getOrCreateLogDir(resolver);
-					Resource historyComponent = historyPage.getContentResource().getChild(HISTORY_COMPONENT);
-					if (historyComponent == null) {
-						historyComponent = createHistoryComponent(historyPage);
-					}
-					String uniqueName = ResourceUtil
-						.createUniqueChildName(historyComponent, source.getName());
-					Resource child = resolver
-						.create(historyComponent, uniqueName, new HashMap<String, Object>());
+			final InstanceDetails.InstanceType instanceType, final String hostname,
+			final Calendar executionTime) {
+		return SlingHelper
+				.resolveDefault(resolverFactory, progressLogger.getExecutor(), new ResolveCallback<Entry>() {
+					@Override
+					public Entry resolve(ResourceResolver resolver) {
+						Entry result = null;
+						Resource source = resolver.getResource(script.getPath());
+						ValueMap values = source.getValueMap();
+						try {
+							Page historyPage = getOrCreateLogDir(resolver);
+							Resource historyComponent = historyPage.getContentResource()
+									.getChild(HISTORY_COMPONENT);
+							if (historyComponent == null) {
+								historyComponent = createHistoryComponent(historyPage);
+							}
+							String uniqueName = ResourceUtil
+									.createUniqueChildName(historyComponent, source.getName());
+							Resource child = resolver
+									.create(historyComponent, uniqueName, new HashMap<String, Object>());
 
-					String executor = getExecutor(resolver, mode);
-					ModifiableEntryBuilder builder = new ModifiableEntryBuilder(child);
-					fillEntryProperties(//
-						builder, mode, progressLogger, instanceType, //
-						hostname, executionTime, source, values, executor//
-					);
+							String executor = getExecutor(resolver, mode);
+							ModifiableEntryBuilder builder = new ModifiableEntryBuilder(child);
+							fillEntryProperties(//
+									builder, mode, progressLogger, instanceType, //
+									hostname, executionTime, source, values, executor//
+							);
 
 					//easier to use JCR API here due to jcr:uuid copy constraints
 					Node file = JcrUtil.copy(source.adaptTo(Node.class), child.adaptTo(Node.class), "script");
@@ -217,31 +227,34 @@ public class HistoryImpl implements History {
 					LOG.error("Issues with saving to repository while logging script execution", e);
 				}
 
-				return result;
-			}
+						return result;
+					}
 
-			private Resource createHistoryComponent(Page historyPage) throws PersistenceException {
-				ResourceResolver resourceResolver = historyPage.getContentResource().getResourceResolver();
-				Map<String, Object> props = ImmutableMap.<String, Object>builder()//
-					.put(JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY, HISTORY_COMPONENT_RESOURCE_TYPE) //
-					.build();
-				return resourceResolver.create(historyPage.getContentResource(), HISTORY_COMPONENT, props);
-			}
-		}, null);
+					private Resource createHistoryComponent(Page historyPage) throws PersistenceException {
+						ResourceResolver resourceResolver = historyPage.getContentResource()
+								.getResourceResolver();
+						Map<String, Object> props = ImmutableMap.<String, Object>builder()//
+								.put(JcrResourceConstants.SLING_RESOURCE_TYPE_PROPERTY,
+										HISTORY_COMPONENT_RESOURCE_TYPE) //
+								.build();
+						return resourceResolver
+								.create(historyPage.getContentResource(), HISTORY_COMPONENT, props);
+					}
+				}, null);
 	}
 
 	private void fillEntryProperties(ModifiableEntryBuilder entryBuilder, Mode mode, Progress progressLogger,
-		InstanceDetails.InstanceType instanceType, String hostname, Calendar executionTime,
-		Resource source, ValueMap values, String executor) {
+			InstanceDetails.InstanceType instanceType, String hostname, Calendar executionTime,
+			Resource source, ValueMap values, String executor) {
 		entryBuilder.setFileName(source.getName()) //
-			.setFilePath(source.getPath()) //
-			.setMode(mode.toString()) //
-			.setProgressLog(ProgressHelper.toJson(progressLogger.getEntries())) //
-			.setExecutionTime(executionTime) //
-			.setAuthor(values.get(JcrConstants.JCR_CREATED_BY, StringUtils.EMPTY)) //
-			.setUploadTime(values.get(JcrConstants.JCR_CREATED, StringUtils.EMPTY)) //
-			.setInstanceType(instanceType.getInstanceName()) //
-			.setInstanceHostname(hostname);
+				.setFilePath(source.getPath()) //
+				.setMode(mode.toString()) //
+				.setProgressLog(ProgressHelper.toJson(progressLogger.getEntries())) //
+				.setExecutionTime(executionTime) //
+				.setAuthor(values.get(JcrConstants.JCR_CREATED_BY, StringUtils.EMPTY)) //
+				.setUploadTime(values.get(JcrConstants.JCR_CREATED, StringUtils.EMPTY)) //
+				.setInstanceType(instanceType.getInstanceName()) //
+				.setInstanceHostname(hostname);
 		if (StringUtils.isNotBlank(executor)) {
 			entryBuilder.setExecutor(executor);
 		}

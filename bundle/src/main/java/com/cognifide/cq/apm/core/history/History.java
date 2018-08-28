@@ -27,7 +27,6 @@ import com.cognifide.cq.apm.api.scripts.Script;
 
 import java.util.Calendar;
 import java.util.List;
-
 import javax.jcr.RepositoryException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -38,7 +37,7 @@ public interface History {
 	 * Save detailed script execution on a remote host as entry
 	 */
 	Entry logRemote(Script script, Mode mode, Progress progressLogger, InstanceDetails instanceDetails,
-			Calendar executionTime);
+		Calendar executionTime);
 
 	/**
 	 * Save detailed script execution as entry

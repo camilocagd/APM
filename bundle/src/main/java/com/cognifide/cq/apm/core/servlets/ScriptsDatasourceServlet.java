@@ -19,6 +19,8 @@
  * =========================LICENSE_END==================================
  */package com.cognifide.cq.apm.core.servlets;
 
+import static com.cognifide.cq.apm.core.models.RowModel.ROW_MODEL_RESOURCE_TYPE;
+
 import com.adobe.granite.ui.components.ds.DataSource;
 import com.adobe.granite.ui.components.ds.SimpleDataSource;
 import com.cognifide.cq.apm.core.Apm;
@@ -66,7 +68,7 @@ public class ScriptsDatasourceServlet extends SlingSafeMethodsServlet{
 
         @Override
         public String getResourceType() {
-            return "apm/components/dashboard/row";
+            return ROW_MODEL_RESOURCE_TYPE;
         }
     }
 

@@ -19,7 +19,7 @@
  */
 package com.cognifide.cq.apm.core.history;
 
-import com.google.common.base.Preconditions;
+import static com.cognifide.cq.apm.core.history.HistoryImpl.REPLICATE_ACTION;
 
 import com.cognifide.actions.api.ActionReceiver;
 import com.cognifide.cq.apm.api.executors.Mode;
@@ -35,7 +35,9 @@ import com.cognifide.cq.apm.core.scripts.ScriptImpl;
 import com.cognifide.cq.apm.core.utils.sling.OperateCallback;
 import com.cognifide.cq.apm.core.utils.sling.SlingHelper;
 import com.day.cq.replication.ReplicationAction;
-
+import com.google.common.base.Preconditions;
+import java.util.Calendar;
+import java.util.List;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
@@ -43,11 +45,6 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.api.resource.ValueMap;
-
-import java.util.Calendar;
-import java.util.List;
-
-import static com.cognifide.cq.apm.core.history.HistoryImpl.REPLICATE_ACTION;
 
 @Service
 @Component(immediate = true)

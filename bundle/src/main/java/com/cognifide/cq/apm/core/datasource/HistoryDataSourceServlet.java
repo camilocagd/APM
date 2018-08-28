@@ -23,9 +23,9 @@ import com.adobe.granite.ui.components.ds.DataSource;
 import com.adobe.granite.ui.components.ds.SimpleDataSource;
 import com.cognifide.cq.apm.core.history.History;
 import com.cognifide.cq.apm.core.Apm;
-import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -50,20 +50,18 @@ public class HistoryDataSourceServlet extends SlingSafeMethodsServlet {
 
 	@Override
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)
-		throws ServletException, IOException {
-		final List<Resource> allHistoryResources = Lists.newArrayList();
-
-		final List<Resource> allRawHistoryResources = history.findAllResource(request.getResourceResolver());
-		for (Resource rawHistoryResource:allRawHistoryResources) {
-			allHistoryResources.add(new ResourceTypeWrapper(rawHistoryResource));
-		}
+			throws ServletException, IOException {
+		final List<Resource> allHistoryResources = history.findAllResource(request.getResourceResolver())
+				.stream()
+				.map(ResourceTypeWrapper::new)
+				.collect(Collectors.toList());
 		DataSource dataSource = new SimpleDataSource(allHistoryResources.iterator());
 		request.setAttribute(DataSource.class.getName(), dataSource);
 	}
 
 	private class ResourceTypeWrapper extends ResourceWrapper {
 
-		ResourceTypeWrapper(Resource resource){
+		ResourceTypeWrapper(Resource resource) {
 			super(resource);
 		}
 

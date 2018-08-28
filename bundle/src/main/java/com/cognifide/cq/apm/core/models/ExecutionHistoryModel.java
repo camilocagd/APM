@@ -21,19 +21,16 @@ package com.cognifide.cq.apm.core.models;
 
 import com.cognifide.cq.apm.api.history.Entry;
 import com.cognifide.cq.apm.core.history.History;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import javax.inject.Inject;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.inject.Inject;
 
 @Model(adaptables = SlingHttpServletRequest.class)
 public final class ExecutionHistoryModel {
