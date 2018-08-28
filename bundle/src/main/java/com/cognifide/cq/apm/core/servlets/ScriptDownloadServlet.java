@@ -91,7 +91,7 @@ public class ScriptDownloadServlet extends SlingSafeMethodsServlet {
 
 		} catch (RepositoryException e) {
 			LOGGER.error(e.getMessage(), e);
-			response.sendRedirect("/etc/apm.html");
+			response.sendRedirect("/apm/dashboard.html");
 			// response.sendError(500);
 		}
 	}

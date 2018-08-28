@@ -33,7 +33,7 @@ public final class ProgressHelper {
 
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-	private static final ProgressHelper.IsErrorPredicate IS_ERROR_PREDICATE = new IsErrorPredicate();
+	private static final IsErrorPredicate IS_ERROR_PREDICATE = new IsErrorPredicate();
 
 	private ProgressHelper() {
 	}

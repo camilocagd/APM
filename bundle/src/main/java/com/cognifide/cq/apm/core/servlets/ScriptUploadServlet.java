@@ -52,7 +52,7 @@ import org.osgi.framework.Constants;
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})
 public class ScriptUploadServlet extends SlingAllMethodsServlet {
 
-	private static final String REDIRECT_URL = "/etc/apm.html";
+	private static final String REDIRECT_URL = "/apm/dashboard.html";
 
 	@Reference
 	private ScriptStorage scriptStorage;
