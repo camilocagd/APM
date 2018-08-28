@@ -22,24 +22,21 @@ package com.cognifide.cq.apm.core.models;
 import com.cognifide.cq.apm.api.executors.Mode;
 import com.cognifide.cq.apm.api.logger.Progress;
 import com.cognifide.cq.apm.api.logger.ProgressEntry;
+import com.cognifide.cq.apm.api.progress.ProgressHelper;
 import com.cognifide.cq.apm.api.scripts.Script;
 import com.cognifide.cq.apm.api.scripts.ScriptFinder;
 import com.cognifide.cq.apm.api.scripts.ScriptManager;
 import com.cognifide.cq.apm.core.jobs.JobResultsCache;
-import com.cognifide.cq.apm.core.progress.ProgressHelper;
 import com.cognifide.cq.apm.core.progress.ProgressImpl;
-
+import java.util.List;
+import javax.inject.Inject;
+import javax.jcr.RepositoryException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
-
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.jcr.RepositoryException;
 
 @Model(adaptables = SlingHttpServletRequest.class)
 public final class ImportSummaryModel {

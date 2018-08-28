@@ -21,8 +21,8 @@ package com.cognifide.cq.apm.core.datasource;
 
 import com.adobe.granite.ui.components.ds.DataSource;
 import com.adobe.granite.ui.components.ds.SimpleDataSource;
-import com.cognifide.cq.apm.core.history.History;
 import com.cognifide.cq.apm.core.Apm;
+import com.cognifide.cq.apm.core.history.History;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;

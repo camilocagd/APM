@@ -24,7 +24,14 @@ import com.cognifide.cq.apm.api.scripts.ScriptFinder;
 import com.cognifide.cq.apm.api.scripts.ScriptStorage;
 import com.cognifide.cq.apm.core.Apm;
 import com.cognifide.cq.apm.core.utils.ServletUtils;
-
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import javax.jcr.RepositoryException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -37,17 +44,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.osgi.framework.Constants;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import javax.jcr.RepositoryException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
-
-@SlingServlet(paths = {"/bin/apm/remove"}, methods = {"POST"})
+@SlingServlet(paths = {Apm.SERVLET_PREFIX_PATH + "remove"}, methods = {"POST"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Remove Scripts Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})

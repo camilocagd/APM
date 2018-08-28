@@ -24,7 +24,6 @@ import com.cognifide.cq.apm.api.history.Entry;
 import com.cognifide.cq.apm.api.history.InstanceDetails;
 import com.cognifide.cq.apm.api.logger.Progress;
 import com.cognifide.cq.apm.api.scripts.Script;
-
 import java.util.Calendar;
 import java.util.List;
 import javax.jcr.RepositoryException;

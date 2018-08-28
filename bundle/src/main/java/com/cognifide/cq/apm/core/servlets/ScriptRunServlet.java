@@ -21,13 +21,16 @@ package com.cognifide.cq.apm.core.servlets;
 
 import com.cognifide.cq.apm.api.executors.Mode;
 import com.cognifide.cq.apm.api.logger.Progress;
+import com.cognifide.cq.apm.api.progress.ProgressHelper;
 import com.cognifide.cq.apm.api.scripts.Script;
 import com.cognifide.cq.apm.api.scripts.ScriptFinder;
 import com.cognifide.cq.apm.api.scripts.ScriptManager;
 import com.cognifide.cq.apm.core.Apm;
-import com.cognifide.cq.apm.core.progress.ProgressHelper;
 import com.cognifide.cq.apm.core.utils.ServletUtils;
-
+import java.io.IOException;
+import javax.jcr.RepositoryException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -40,13 +43,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.osgi.framework.Constants;
 
-import java.io.IOException;
-
-import javax.jcr.RepositoryException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
-
-@SlingServlet(paths = {"/bin/apm/run"}, methods = {"POST"})
+@SlingServlet(paths = {Apm.SERVLET_PREFIX_PATH + "run"}, methods = {"POST"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Run Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})

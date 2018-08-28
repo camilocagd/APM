@@ -28,7 +28,9 @@ import com.cognifide.cq.apm.core.Apm;
 import com.cognifide.cq.apm.core.scripts.ModifiableScriptWrapper;
 import com.cognifide.cq.apm.core.utils.ServletUtils;
 import com.day.cq.replication.ReplicationException;
-
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -42,12 +44,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
-
-@SlingServlet(paths = {"/bin/apm/replicate"}, methods = {"GET"})
+@SlingServlet(paths = {Apm.SERVLET_PREFIX_PATH + "replicate"}, methods = {"GET"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Replicate Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})

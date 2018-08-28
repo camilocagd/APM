@@ -21,14 +21,13 @@ package com.cognifide.cq.apm.core.scripts.listeners;
 
 import com.cognifide.cq.apm.api.executors.Mode;
 import com.cognifide.cq.apm.api.history.Entry;
-import com.cognifide.cq.apm.core.history.History;
 import com.cognifide.cq.apm.api.logger.Progress;
 import com.cognifide.cq.apm.api.scripts.Event;
 import com.cognifide.cq.apm.api.scripts.EventListener;
 import com.cognifide.cq.apm.api.scripts.Script;
 import com.cognifide.cq.apm.api.scripts.ScriptManager;
 import com.cognifide.cq.apm.api.utils.InstanceTypeProvider;
-
+import com.cognifide.cq.apm.core.history.History;
 import javax.jcr.RepositoryException;
 import org.apache.felix.scr.annotations.Activate;
 import org.apache.felix.scr.annotations.Component;

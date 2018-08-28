@@ -19,14 +19,16 @@
  */
 package com.cognifide.cq.apm.core.servlets;
 
+import com.cognifide.cq.apm.api.scriptrunnerjob.JobProgressOutput;
+import com.cognifide.cq.apm.core.Apm;
+import com.cognifide.cq.apm.core.jobs.ScriptRunnerJobManager;
+import com.cognifide.cq.apm.core.utils.ServletUtils;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import com.cognifide.cq.apm.api.scriptrunnerjob.JobProgressOutput;
-import com.cognifide.cq.apm.core.jobs.ScriptRunnerJobManager;
-import com.cognifide.cq.apm.core.utils.ServletUtils;
-
+import java.io.IOException;
+import java.util.Map;
+import javax.servlet.ServletException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -39,12 +41,7 @@ import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.event.jobs.Job;
 import org.osgi.framework.Constants;
 
-import java.io.IOException;
-import java.util.Map;
-
-import javax.servlet.ServletException;
-
-@SlingServlet(paths = {"/bin/apm/run-background"}, methods = {"GET", "POST"})
+@SlingServlet(paths = {Apm.SERVLET_PREFIX_PATH + "run-background"}, methods = {"GET", "POST"})
 @Service
 @Properties({
 		@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Servlet for running scripts in background and checking theirs status"),

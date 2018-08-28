@@ -25,6 +25,7 @@ import com.cognifide.cq.apm.api.logger.Message;
 import com.cognifide.cq.apm.api.logger.Progress;
 import com.cognifide.cq.apm.api.logger.ProgressEntry;
 import com.cognifide.cq.apm.api.logger.Status;
+import com.cognifide.cq.apm.api.progress.ProgressHelper;
 import com.google.common.collect.Lists;
 import java.util.LinkedList;
 import java.util.List;

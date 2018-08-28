@@ -23,7 +23,9 @@ import com.cognifide.cq.apm.core.Apm;
 import com.cognifide.cq.apm.core.models.FileModel;
 import com.cognifide.cq.apm.core.models.ImportInitModel;
 import com.cognifide.cq.apm.core.utils.ServletUtils;
-
+import java.io.IOException;
+import java.util.List;
+import javax.servlet.ServletException;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.Service;
@@ -33,12 +35,7 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.osgi.framework.Constants;
 
-import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.ServletException;
-
-@SlingServlet(paths = {"/bin/apm/list"}, methods = {"GET"})
+@SlingServlet(paths = {Apm.SERVLET_PREFIX_PATH + "list"}, methods = {"GET"})
 @Service
 @Properties({
 		@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM List Servlet"),

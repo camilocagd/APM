@@ -19,11 +19,10 @@
  */
 package com.cognifide.cq.apm.core.models;
 
-import com.cognifide.cq.apm.api.history.Entry;
-import com.cognifide.cq.apm.core.history.History;
-
 import static com.cognifide.cq.apm.core.servlets.ScriptResultServlet.EXECUTION_RESULT_SERVLET_PATH;
 
+import com.cognifide.cq.apm.api.history.Entry;
+import com.cognifide.cq.apm.core.history.History;
 import javax.inject.Inject;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;

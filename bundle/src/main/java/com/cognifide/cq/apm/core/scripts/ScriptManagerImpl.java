@@ -19,8 +19,6 @@
  */
 package com.cognifide.cq.apm.core.scripts;
 
-import com.google.common.collect.Maps;
-
 import com.cognifide.cq.apm.api.actions.Action;
 import com.cognifide.cq.apm.api.actions.ActionDescriptor;
 import com.cognifide.cq.apm.api.actions.ActionFactory;
@@ -46,8 +44,22 @@ import com.cognifide.cq.apm.core.actions.executor.ActionExecutor;
 import com.cognifide.cq.apm.core.progress.ProgressImpl;
 import com.cognifide.cq.apm.core.sessions.SessionSavingMode;
 import com.cognifide.cq.apm.core.sessions.SessionSavingPolicy;
-
+import com.google.common.collect.Maps;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.felix.scr.annotations.Component;
@@ -61,21 +73,6 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.StringReader;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
 
 @Component
 @Service

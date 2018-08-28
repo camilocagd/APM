@@ -20,7 +20,14 @@
 package com.cognifide.cq.apm.core.servlets;
 
 import com.cognifide.cq.apm.core.Apm;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import javax.servlet.ServletException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -34,17 +41,7 @@ import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URLEncoder;
-
-import javax.jcr.Node;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.servlet.ServletException;
-
-@SlingServlet(paths = {"/bin/apm/fileDownload"}, methods = {"GET"})
+@SlingServlet(paths = {Apm.SERVLET_PREFIX_PATH + "fileDownload"}, methods = {"GET"})
 @Service
 // @formatter:off
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM File Download Servlet"),

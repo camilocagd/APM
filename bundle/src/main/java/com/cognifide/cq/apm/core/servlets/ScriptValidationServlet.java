@@ -24,7 +24,12 @@ import com.cognifide.cq.apm.api.logger.Progress;
 import com.cognifide.cq.apm.api.scripts.ScriptManager;
 import com.cognifide.cq.apm.core.Apm;
 import com.cognifide.cq.apm.core.utils.ServletUtils;
-
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.jcr.RepositoryException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
@@ -36,15 +41,7 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.osgi.framework.Constants;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.jcr.RepositoryException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
-
-@SlingServlet(paths = {"/bin/apm/validate"})
+@SlingServlet(paths = {Apm.SERVLET_PREFIX_PATH + "validate"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM Validation Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})

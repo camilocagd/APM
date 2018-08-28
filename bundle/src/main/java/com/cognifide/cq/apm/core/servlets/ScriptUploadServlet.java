@@ -19,14 +19,20 @@
  */
 package com.cognifide.cq.apm.core.servlets;
 
-import com.google.common.collect.Maps;
-
 import com.cognifide.cq.apm.api.scripts.Script;
 import com.cognifide.cq.apm.api.scripts.ScriptStorage;
 import com.cognifide.cq.apm.core.Apm;
 import com.cognifide.cq.apm.core.scripts.ScriptUtils;
 import com.cognifide.cq.apm.core.utils.ServletUtils;
-
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.jcr.RepositoryException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.felix.scr.annotations.Properties;
@@ -40,17 +46,7 @@ import org.apache.sling.api.request.RequestParameter;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.osgi.framework.Constants;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.jcr.RepositoryException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
-
-@SlingServlet(paths = {"/bin/apm/fileUpload"}, methods = {"POST"})
+@SlingServlet(paths = {Apm.SERVLET_PREFIX_PATH + "fileUpload"}, methods = {"POST"})
 @Service
 @Properties({@Property(name = Constants.SERVICE_DESCRIPTION, value = "APM File Upload Servlet"),
 		@Property(name = Constants.SERVICE_VENDOR, value = Apm.VENDOR_NAME)})

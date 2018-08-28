@@ -22,8 +22,7 @@ package com.cognifide.cq.apm.api.history;
 
 import com.cognifide.cq.apm.api.executors.Mode;
 import com.cognifide.cq.apm.api.logger.ProgressEntry;
-import com.cognifide.cq.apm.core.history.HistoryResourceAdapter;
-import com.cognifide.cq.apm.core.progress.ProgressHelper;
+import com.cognifide.cq.apm.api.progress.ProgressHelper;
 import com.google.common.collect.ComparisonChain;
 import java.util.Date;
 import java.util.List;
