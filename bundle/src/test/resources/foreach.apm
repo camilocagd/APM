@@ -1,19 +1,19 @@
-USE MACRO macro1
+use macro1
 
 SEPARATE # only to separate logs
 
-FOREACH i IN ['a', 'b'] BEGIN
-  FOREACH j IN ['c', 'd']
-  BEGIN
-    SHOW $i+'/'+$j
-  END
-END
+for i in ['a', 'b'] {
+  for j in ['c', 'd']
+  {
+    SHOW ($i+'/'+$j)
+  }
+}
 
-DEFINE MACRO macro1 BEGIN
-  FOREACH i IN ['a', 'b']
-  BEGIN
-    FOREACH j IN ['c', 'd'] BEGIN
-      SHOW $i+'/'+$j
-    END
-  END
-END
+def macro1 {
+  for i in ['a', 'b']
+  {
+    for j in ['c', 'd'] {
+      SHOW ($i+'/'+$j)
+    }
+  }
+}

@@ -65,16 +65,16 @@ parameter
 command
     : EXECUTE_MACRO name parametersInvocation? # MacroExecution
     | FOR_EACH IDENTIFIER IN parameter EOL? BLOCK_BEGIN EOL? body BLOCK_END # ForEach
-    | DEFINE IDENTIFIER parameter # VariableDefinition
+    | DEFINE IDENTIFIER '=' parameter # VariableDefinition
     | IDENTIFIER parametersInvocation? # GenericCommand
     ;
 
 parametersDefinition
-    : IDENTIFIER+
+    : PARENTHESIS_OPEN IDENTIFIER (',' IDENTIFIER)* PARENTHESIS_CLOSE
     ;
 
 parametersInvocation
-    : parameter+
+    : PARENTHESIS_OPEN parameter (',' parameter)* PARENTHESIS_CLOSE
     ;
 
 body
@@ -104,41 +104,38 @@ ARRAY_BEGIN
 ARRAY_END
     : ']'
     ;
+PARENTHESIS_OPEN
+    : '('
+    ;
+PARENTHESIS_CLOSE
+    : ')'
+    ;
 BLOCK_BEGIN
-    : 'begin'
-    | 'BEGIN'
+    : '{'
     ;
 BLOCK_END
-    : 'end'
-    | 'END'
+    : '}'
     ;
 DEFINE_MACRO
-    : 'define macro'
-    | 'DEFINE MACRO'
+    : 'def'
     ;
 EXECUTE_MACRO
-    : 'use macro'
-    | 'USE MACRO'
+    : 'use'
     ;
 IMPORT_SCRIPT
     : 'import'
-    | 'IMPORT'
     ;
 INPLACE
     : 'inplace'
-    | 'INPLACE'
     ;
 FOR_EACH
-    : 'foreach'
-    | 'FOREACH'
+    : 'for'
     ;
 IN
     : 'in'
-    | 'IN'
     ;
 DEFINE
-    : 'define'
-    | 'DEFINE'
+    : 'var'
     ;
 NUMBER_LITERAL
     : [0-9]+

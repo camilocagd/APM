@@ -1,24 +1,24 @@
-USE MACRO macro2 path001 path002
-USE MACRO macro1 path001
+use macro2 (path001, path002)
+use macro1 (path001)
 
-DEFINE MACRO macro1 path1 BEGIN
-  ALLOW $path1 READ
-  DENY path2 READ
-  ALLOW path3 READ
-END
+def macro1 (path1) {
+  ALLOW ($path1, READ)
+  DENY (path2, READ)
+  ALLOW (path3, READ)
+}
 
 # macro2
-DEFINE MACRO macro2 path1 path2 BEGIN
-  ALLOW $path1 WRITE
-  ALLOW $path2 WRITE
-  ALLOW path3 WRITE
-END
+def macro2 (path1, path2) {
+  ALLOW ($path1, WRITE)
+  ALLOW ($path2, WRITE)
+  ALLOW (path3, WRITE)
+}
 
 # macro3
-DEFINE MACRO macro3 path1 path2 path3 BEGIN
-  ALLOW $path1 DELETE
-  ALLOW $path2 DELETE
-  DENY $path3 DELETE
-END
+def macro3 (path1, path2, path3) {
+  ALLOW ($path1, DELETE)
+  ALLOW ($path2, DELETE)
+  DENY ($path3, DELETE)
+}
 
-USE MACRO macro3 path001 path002 path003
+use macro3 (path001, path002, path003)
