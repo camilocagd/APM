@@ -23,7 +23,7 @@ package com.cognifide.cq.cqsm.core.antlr;
 import static java.lang.String.format;
 
 import com.cognifide.apm.antlr.ApmLangBaseVisitor;
-import com.cognifide.apm.antlr.ApmLangParser.ForeachContext;
+import com.cognifide.apm.antlr.ApmLangParser.ForEachContext;
 import com.cognifide.apm.antlr.ApmLangParser.GenericCommandContext;
 import com.cognifide.apm.antlr.ApmLangParser.MacroDefinitionContext;
 import com.cognifide.apm.antlr.ApmLangParser.MacroExecutionContext;
@@ -110,7 +110,7 @@ public class ScriptRunner {
     }
 
     @Override
-    public Void visitForeach(ForeachContext ctx) {
+    public Void visitForEach(ForEachContext ctx) {
       ParameterResolver parameterResolver = scriptContext.getParameterResolver();
       VariableHolder variableHolder = scriptContext.getVariableHolder();
       try {
@@ -168,9 +168,12 @@ public class ScriptRunner {
     public Void visitGenericCommand(GenericCommandContext ctx) {
       String commandName = ctx.IDENTIFIER().toString().toUpperCase();
       ParameterResolver parameterResolver = scriptContext.getParameterResolver();
-      List<ApmType> parameters = ctx.parameter().stream()
-          .map(parameterResolver::resolve)
-          .collect(Collectors.toList());
+      List<ApmType> parameters = Collections.emptyList();
+      if (ctx.parametersInvocation() != null) {
+        parameters = ctx.parametersInvocation().parameter().stream()
+            .map(parameterResolver::resolve)
+            .collect(Collectors.toList());
+      }
       actionInvoker.runAction(scriptContext.getProgress(), commandName, new Parameters(parameters));
       return null;
     }
